@@ -1,0 +1,321 @@
+@font-face {
+  font-family: Integral;
+  src: url(../assets/font/IntegralCF-Regular.otf);
+}
+
+@font-face {
+  font-family: IntegralBold;
+  src: url(../assets/font/IntegralCF-Bold.otf);
+}
+
+@font-face {
+  font-family: Lemon;
+  src: url(../assets/font/LemonMilk.otf);
+}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.main_container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main_container:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 80%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#front {
+  position: relative;
+  z-index: 2;
+  height: 80vh;
+}
+
+#front #label {
+  margin-bottom: 100px;
+}
+
+#front #label svg {
+  display: block;
+  margin: auto;
+  height: 50px;
+}
+
+#front #lm {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  mix-blend-mode: screen;
+  z-index: 2;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: perspective(1000px);
+          transform: perspective(1000px);
+  margin-top: 50px;
+}
+
+#front #lm svg {
+  height: 400px;
+  -webkit-transform: translateZ(100px);
+          transform: translateZ(100px);
+  z-index: 2;
+  -webkit-animation: lm 2s ease both;
+          animation: lm 2s ease both;
+  stroke: none;
+  stroke-width: 0;
+}
+
+#front #lm #navBtn {
+  will-change: transform;
+  -webkit-transform: translateZ(20px);
+          transform: translateZ(20px);
+  z-index: -1;
+  height: 70px;
+  width: 30vw;
+  border: 1px solid #dfc363;
+  margin: auto;
+  -webkit-transform: skew(-25deg);
+          transform: skew(-25deg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0 30px;
+  font-family: Lemon;
+  cursor: pointer;
+}
+
+#front #lm #navBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #dfc363;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  z-index: -1;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+#front #lm #navBtn span {
+  -webkit-transform: skew(25deg);
+          transform: skew(25deg);
+  color: #fff;
+}
+
+#front #lm #navBtn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 250%;
+  width: 110%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#front #lm:hover {
+  cursor: pointer;
+}
+
+#front #lm:hover #navBtn span {
+  color: #333;
+}
+
+#front #lm:hover #navBtn::after {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+#front .text {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#front .text .outlined {
+  font-size: 60px;
+  color: transparent;
+  letter-spacing: 17.6px;
+  padding-left: 17.6px;
+  -webkit-text-stroke: 1px #dfc363;
+  font-family: IntegralBold;
+}
+
+#front .text .white {
+  font-size: 40px;
+  letter-spacing: 23.76px;
+  color: #fff;
+  font-family: Integral;
+}
+
+#front .text .letter {
+  display: inline-block;
+  line-height: 1em;
+  opacity: 0;
+}
+
+#front .text > div {
+  will-change: transform;
+}
+
+@-webkit-keyframes pathFill {
+  0% {
+    fill: transparent;
+  }
+  90% {
+    fill: grey;
+  }
+  100% {
+    fill: url(#img1);
+  }
+}
+
+@keyframes pathFill {
+  0% {
+    fill: transparent;
+  }
+  90% {
+    fill: grey;
+  }
+  100% {
+    fill: url(#img1);
+  }
+}
+
+@-webkit-keyframes lm {
+  from {
+    -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes lm {
+  from {
+    -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.stagger-visualizer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: -1;
+}
+
+.stagger-visualizer div {
+  height: 150%;
+  border: 1px solid #1b1b1b;
+}
+
+.stagger-visualizer .l1 {
+  -webkit-transform: rotate(-15deg) translateX(100px);
+          transform: rotate(-15deg) translateX(100px);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+.stagger-visualizer .l2 {
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+}
+
+.stagger-visualizer .l3 {
+  -webkit-transform: rotate(-25deg);
+          transform: rotate(-25deg);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+.stagger-visualizer .l4 {
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.stagger-visualizer .l5 {
+  -webkit-transform: rotate(-25deg) translateX(-100px);
+          transform: rotate(-25deg) translateX(-100px);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+#bm {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 100vh;
+  width: 100vw;
+}
+/*# sourceMappingURL=main.css.map */
