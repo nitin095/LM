@@ -32,7 +32,6 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
 }
 
 .main_container {
@@ -59,16 +58,24 @@ canvas {
   height: 80%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
+  display: none;
 }
 
 #front {
   position: relative;
   z-index: 2;
-  height: 80vh;
+  height: 100vh;
+  display: none;
 }
 
 #front #label {
-  margin-bottom: 100px;
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #front #label svg {
@@ -77,7 +84,20 @@ canvas {
   height: 50px;
 }
 
-#front #lm {
+#front #content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80vh;
+}
+
+#front #content #lm {
   -webkit-transform-origin: center;
           transform-origin: center;
   mix-blend-mode: screen;
@@ -89,7 +109,7 @@ canvas {
   margin-top: 50px;
 }
 
-#front #lm svg {
+#front #content #lm svg {
   height: 400px;
   -webkit-transform: translateZ(100px);
           transform: translateZ(100px);
@@ -100,7 +120,7 @@ canvas {
   stroke-width: 0;
 }
 
-#front #lm #navBtn {
+#front #content #lm #navBtn {
   will-change: transform;
   -webkit-transform: translateZ(20px);
           transform: translateZ(20px);
@@ -126,7 +146,7 @@ canvas {
   cursor: pointer;
 }
 
-#front #lm #navBtn::after {
+#front #content #lm #navBtn::after {
   content: "";
   position: absolute;
   top: 0;
@@ -143,13 +163,13 @@ canvas {
           transform-origin: center;
 }
 
-#front #lm #navBtn span {
+#front #content #lm #navBtn span {
   -webkit-transform: skew(25deg);
           transform: skew(25deg);
   color: #fff;
 }
 
-#front #lm #navBtn::before {
+#front #content #lm #navBtn::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -160,27 +180,28 @@ canvas {
           transform: translate(-50%, -50%);
 }
 
-#front #lm:hover {
+#front #content #lm:hover {
   cursor: pointer;
 }
 
-#front #lm:hover #navBtn span {
+#front #content #lm:hover #navBtn span {
   color: #333;
 }
 
-#front #lm:hover #navBtn::after {
+#front #content #lm:hover #navBtn::after {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
-#front .text {
+#front #content .text {
+  width: 100%;
   text-align: center;
   text-transform: uppercase;
 }
 
-#front .text .outlined {
+#front #content .text .outlined {
   font-size: 60px;
   color: transparent;
   letter-spacing: 17.6px;
@@ -189,20 +210,20 @@ canvas {
   font-family: IntegralBold;
 }
 
-#front .text .white {
+#front #content .text .white {
   font-size: 40px;
   letter-spacing: 23.76px;
   color: #fff;
   font-family: Integral;
 }
 
-#front .text .letter {
+#front #content .text .letter {
   display: inline-block;
   line-height: 1em;
   opacity: 0;
 }
 
-#front .text > div {
+#front #content .text > div {
   will-change: transform;
 }
 
