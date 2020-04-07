@@ -11,6 +11,7 @@
 
     <div class="main_container">
 
+
         <div id="front">
             <div id="label">
                 <svg xmlns="http://www.w3.org/2000/svg" width="351.96" height="65.189" viewBox="0 0 351.96 65.189">
@@ -159,10 +160,6 @@
         integrity="sha256-+5R1zw/Tcxp82QhhfAJlicTeM4LCzFxp6EvsZW3V9bE=" crossorigin="anonymous"></script>
     <script src="https://s3.amazonaws.com/coursetro/stuff/mtl.js"></script>
     <script src="https://s3.amazonaws.com/coursetro/stuff/obj.js"></script>
-    <!-- <script src="./jsm/postprocessing/EffectComposer.js"></script>
-    <script src="./jsm/postprocessing/RenderPass.js"></script>
-    <script src="./jsm/postprocessing/BloomPass.js"></script>
-    <script src="./jsm/postprocessing/FilmPass.js"></script> -->
     <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/postprocessing/EffectComposer.js"></script>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/postprocessing/ShaderPass.js"></script>
@@ -195,14 +192,11 @@
           vec4 color = texture2D( tDiffuse, vUv );
           vec2 uvRandom = vUv;
           uvRandom.y *= random(vec2(uvRandom.y,amount));
-          color.rgb += random(uvRandom)*0.1;
+          color.rgb += random(uvRandom)*0.05;
           gl_FragColor = vec4( color  );
         }
       </script>
     <script type="module">
-
-        // import { TrackballControls } from './jsm/controls/TrackballControls.js';
-
         // Create the Three.js Scene
         var scene = new THREE.Scene();
         scene.translateZ(18);
@@ -232,13 +226,10 @@
 
         // Create a Full Screen WebGL Renderer
         var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setClearColor("#000000");
+        renderer.setClearColor("#020202");
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         document.body.appendChild(renderer.domElement);
-
-        // controls = new TrackballControls(camera, renderer.domElement);
-        // controls.object.position.set(0, 0, 0);
 
         // Make sure the project is responsive based on window resizing
         window.addEventListener('resize', () => {
@@ -263,20 +254,17 @@
         // var directionalLight = new THREE.DirectionalLight(0xdfc363, 0.1);
         // scene.add(directionalLight);
 
-        var mouseLight = new THREE.SpotLight(0x8a6707, 0.6, 60, Math.PI / 2, 0, 1);
-        mouseLight.position.set(0, 40, 0);
-        mouseLight.shadow.camera.near = 50;
-        mouseLight.shadow.camera.far = 40;
-        mouseLight.shadow.camera.fov = 30;
-        scene.add(mouseLight);
+        // var mouseLight = new THREE.PointLight(0x8a6707);
+        // mouseLight.position.set(0, 40, 0);
+        // scene.add(mouseLight);
 
-        var spotLight = new THREE.SpotLight(0x8a6707, 0.6, 60, Math.PI / 2, 0, 1);
+        var spotLight = new THREE.SpotLight(0x8a6707, 1, 60, Math.PI / 2, 0, 1);
         spotLight.position.set(0, 40, 0);
 
         // spotLight.castShadow = true;
 
-        // spotLight.shadow.mapSize.width = 1024;
-        // spotLight.shadow.mapSize.height = 1024;
+        spotLight.shadow.mapSize.width = 1024;
+        spotLight.shadow.mapSize.height = 1024;
 
         spotLight.shadow.camera.near = 50;
         spotLight.shadow.camera.far = 40;
@@ -289,8 +277,6 @@
 
         // var lightAmb = new THREE.AmbientLight(0x4d3902, 0.1);
         // scene.add(lightAmb);
-
-        // Defining a variable for our two models
         var Obj1;
         var Obj2;
         var Obj3;
@@ -452,41 +438,33 @@
                 scene.add(Obj9);
 
 
-                gsap.from(Obj1.position, 2.3, { z: 9, ease: Expo.easeOut });
-                gsap.from(Obj1.scale, 2.3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj1.rotation, 2.3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj1.scale, 3.5, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj1.rotation, 3.5, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj2.position, 2.6, { z: 8, ease: Expo.easeOut });
-                gsap.from(Obj2.scale, 2.6, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj2.rotation, 2.6, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj2.scale, 3.8, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj2.rotation, 3.8, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj3.position, 3, { z: 7, ease: Expo.easeOut });
-                gsap.from(Obj3.scale, 3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj3.rotation, 3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj3.scale, 4.2, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj3.rotation, 4.2, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj4.position, 3.3, { z: 6, ease: Expo.easeOut });
-                gsap.from(Obj4.scale, 3.3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj4.rotation, 3.3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj4.scale, 4.3, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj4.rotation, 4.3, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj5.position, 3.6, { z: 5, ease: Expo.easeOut });
-                gsap.from(Obj5.scale, 3.6, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj5.rotation, 3.6, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj5.scale, 4.7, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj5.rotation, 4.7, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj6.position, 4, { z: 4, ease: Expo.easeOut });
-                gsap.from(Obj6.scale, 4, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj6.rotation, 4, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj6.scale, 5, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj6.rotation, 5, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj7.position, 4.3, { z: 3, ease: Expo.easeOut });
-                gsap.from(Obj7.scale, 4.3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj7.rotation, 4.3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj7.scale, 5.3, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj7.rotation, 5.3, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj8.position, 4.6, { z: 2, ease: Expo.easeOut });
-                gsap.from(Obj8.scale, 4.6, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj8.rotation, 4.6, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj8.scale, 5.7, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj8.rotation, 5.7, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj9.position, 5, { z: 1, ease: Expo.easeOut });
-                gsap.from(Obj9.scale, 5, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj9.rotation, 5, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj9.scale, 6, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj9.rotation, 6, { y: 2, ease: Expo.easeOut });
+
                 setTimeout(() => {
                     document.addEventListener('mousemove', function (e) {
                         var mousecoords = getMousePos(e);
@@ -519,86 +497,31 @@
             composer.render();
         }
 
-        // document.addEventListener('mousemove', onMouseMove, false);
+        document.addEventListener('mousemove', onMouseMove, false);
 
-        // var mouse = {
-        //     x: 0,
-        //     y: 0
-        // };
-        // // Follows the mouse event
-        // function onMouseMove(event) {
+        var mouse = {
+            x: 0,
+            y: 0
+        };
+        // Follows the mouse event
+        function onMouseMove(event) {
 
-        //     // Update the mouse variable
-        //     event.preventDefault();
-        //     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        //     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            // Update the mouse variable
+            event.preventDefault();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        //     // Make the sphere follow the mouse
-        //     var vector = new THREE.Vector3(mouse.x, mouse.y, 2);
-        //     vector.unproject(camera);
-        //     var dir = vector.sub(camera.position).normalize();
-        //     var distance = -camera.position.z / dir.z;
-        //     var pos = camera.position.clone().add(dir.multiplyScalar(distance));
-        //     //mouseMesh.position.copy(pos);
+            // Make the sphere follow the mouse
+            var vector = new THREE.Vector3(mouse.x, mouse.y*8, 0.5);
+            vector.unproject(camera);
+            var dir = vector.sub(camera.position).normalize();
+            var distance = -camera.position.z / dir.z;
+            var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+            //mouseMesh.position.copy(pos);
 
-        //     mouseLight.position.copy(new THREE.Vector3(pos.y, pos.x + 40, 0));
-        //     // gsap.to(mouseLight.position, 3, { y: pos.y, x: pos.x, z: pos.z, ease: Expo.easeOut })
-
-        // };
-
-
-        var mouseDown = false,
-            mouseX = 0,
-            mouseY = 0;
-
-        function onMouseMove(evt) {
-            if (!mouseDown) {
-                return;
-            }
-
-            evt.preventDefault();
-
-            var deltaX = evt.clientX - mouseX,
-                deltaY = evt.clientY - mouseY;
-            mouseX = evt.clientX;
-            mouseY = evt.clientY;
-            rotateScene(deltaX, deltaY);
-        }
-
-        function onMouseDown(evt) {
-            evt.preventDefault();
-
-            mouseDown = true;
-            mouseX = evt.clientX;
-            mouseY = evt.clientY;
-        }
-
-        function onMouseUp(evt) {
-            evt.preventDefault();
-
-            mouseDown = false;
-        }
-
-        function addMouseHandler(canvas) {
-            canvas.addEventListener('mousemove', function (e) {
-                onMouseMove(e);
-            }, false);
-            canvas.addEventListener('mousedown', function (e) {
-                onMouseDown(e);
-            }, false);
-            canvas.addEventListener('mouseup', function (e) {
-                onMouseUp(e);
-            }, false);
-        }
-
-        function rotateScene(deltaX, deltaY) {
-            console.log('isnide')
-            Obj2.rotation.y += deltaX / 100;
-            Obj2.rotation.x += deltaY / 100;
-        }
-
-        addMouseHandler(document.getElementsByTagName('canvas')[0]);
-
+            // mouseLight.position.copy(new THREE.Vector3(pos.x, pos.y, pos.z + 2));
+            // gsap.to(mouseLight.position, 3, { y: pos.y, x: pos.x, z: pos.z, ease: Expo.easeOut })
+        };
 
         //COMPOSER
 
