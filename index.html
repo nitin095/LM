@@ -512,7 +512,7 @@
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
             // Make the sphere follow the mouse
-            var vector = new THREE.Vector3(mouse.x, mouse.y*8, 0.5);
+            var vector = new THREE.Vector3(mouse.x, mouse.y * 8, 0.5);
             vector.unproject(camera);
             var dir = vector.sub(camera.position).normalize();
             var distance = -camera.position.z / dir.z;
@@ -606,41 +606,43 @@
         var textWrapper2 = document.getElementById('lowerText');
         textWrapper2.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline()
-            .add({
-                targets: '#label',
-                translateY: [-50, 0],
-                translateZ: 0,
-                opacity: [0, 1],
-                easing: "easeOutExpo",
-                duration: 2800,
-            }).add({
-                targets: '#mainText .letter',
-                translateY: [50, 0],
-                translateZ: 0,
-                opacity: [0, 1],
-                easing: "easeOutExpo",
-                duration: 2800,
-                offset: '-=2800',
-                delay: (el, i) => 300 + 30 * i
-            }).add({
-                targets: '#lowerText .letter',
-                translateY: [50, 0],
-                translateZ: 0,
-                opacity: [0, 1],
-                easing: "easeOutExpo",
-                duration: 2800,
-                offset: '-=2800',
-                delay: (el, i) => 300 + 30 * i
-            }).add({
-                targets: '#navBtn',
-                scaleX: [0, 1],
-                skewX: ['-20deg', '-25deg'],
-                opacity: [0, 1],
-                easing: "easeOutExpo",
-                duration: 1800,
-                offset: '-=2800',
-            });
+        setTimeout(() => {
+            anime.timeline()
+                .add({
+                    targets: '#label',
+                    translateY: [-50, 0],
+                    translateZ: 0,
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 2800,
+                }).add({
+                    targets: '#mainText .letter',
+                    translateY: [50, 0],
+                    translateZ: 0,
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 2800,
+                    offset: '-=2800',
+                    delay: (el, i) => 300 + 30 * i
+                }).add({
+                    targets: '#lowerText .letter',
+                    translateY: [50, 0],
+                    translateZ: 0,
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 2800,
+                    offset: '-=2800',
+                    delay: (el, i) => 300 + 30 * i
+                }).add({
+                    targets: '#navBtn',
+                    scaleX: [0, 1],
+                    skewX: ['-20deg', '-25deg'],
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 1800,
+                    offset: '-=2800',
+                });
+        }, 1400);
 
 
     </script>

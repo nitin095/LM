@@ -50,6 +50,8 @@ canvas {
     left: 0;
     height: 80%;
     width: 100%;
+    transform: translateY(100%);
+    animation: slideUp 3s ease both;
     background: rgba($color: #000000, $alpha: 0.5);
     // display: none;
   }
@@ -64,6 +66,7 @@ canvas {
     height: 20vh;
     display: flex;
     align-items: center;
+    transform: translateY(-100%);
     svg {
       display: block;
       margin: auto;
@@ -259,4 +262,13 @@ canvas {
   height: 100vh;
   width: 100vw;
   // display: none;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to{
+    transform: translateY(0);
+  }
 }
