@@ -160,10 +160,6 @@
         integrity="sha256-+5R1zw/Tcxp82QhhfAJlicTeM4LCzFxp6EvsZW3V9bE=" crossorigin="anonymous"></script>
     <script src="https://s3.amazonaws.com/coursetro/stuff/mtl.js"></script>
     <script src="https://s3.amazonaws.com/coursetro/stuff/obj.js"></script>
-    <!-- <script src="./jsm/postprocessing/EffectComposer.js"></script>
-    <script src="./jsm/postprocessing/RenderPass.js"></script>
-    <script src="./jsm/postprocessing/BloomPass.js"></script>
-    <script src="./jsm/postprocessing/FilmPass.js"></script> -->
     <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/postprocessing/EffectComposer.js"></script>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/postprocessing/ShaderPass.js"></script>
@@ -196,14 +192,11 @@
           vec4 color = texture2D( tDiffuse, vUv );
           vec2 uvRandom = vUv;
           uvRandom.y *= random(vec2(uvRandom.y,amount));
-          color.rgb += random(uvRandom)*0.1;
+          color.rgb += random(uvRandom)*0.05;
           gl_FragColor = vec4( color  );
         }
       </script>
     <script type="module">
-
-        // import { TrackballControls } from './jsm/controls/TrackballControls.js';
-
         // Create the Three.js Scene
         var scene = new THREE.Scene();
         scene.translateZ(18);
@@ -233,13 +226,10 @@
 
         // Create a Full Screen WebGL Renderer
         var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setClearColor("#000000");
+        renderer.setClearColor("#020202");
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         document.body.appendChild(renderer.domElement);
-
-        // controls = new TrackballControls(camera, renderer.domElement);
-        // controls.object.position.set(0, 0, 0);
 
         // Make sure the project is responsive based on window resizing
         window.addEventListener('resize', () => {
@@ -264,9 +254,9 @@
         // var directionalLight = new THREE.DirectionalLight(0xdfc363, 0.1);
         // scene.add(directionalLight);
 
-        // var mouseLight = new THREE.PointLight(0x8a6707);
-        // mouseLight.position.set(10, 10, 10);
-        // scene.add(mouseLight);
+        var mouseLight = new THREE.PointLight(0x8a6707);
+        mouseLight.position.set(0, 40, 0);
+        scene.add(mouseLight);
 
         var spotLight = new THREE.SpotLight(0x8a6707, 1, 60, Math.PI / 2, 0, 1);
         spotLight.position.set(0, 40, 0);
@@ -287,8 +277,6 @@
 
         // var lightAmb = new THREE.AmbientLight(0x4d3902, 0.1);
         // scene.add(lightAmb);
-
-        // Defining a variable for our two models
         var Obj1;
         var Obj2;
         var Obj3;
@@ -450,32 +438,32 @@
                 scene.add(Obj9);
 
 
-                gsap.from(Obj1.scale, 3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj1.rotation, 3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj1.scale, 3.5, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj1.rotation, 3.5, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj2.scale, 3.3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj2.rotation, 3.3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj2.scale, 3.8, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj2.rotation, 3.8, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj3.scale, 3.6, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj3.rotation, 3.6, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj3.scale, 4.2, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj3.rotation, 4.2, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj4.scale, 4, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj4.rotation, 4, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj4.scale, 4.3, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj4.rotation, 4.3, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj5.scale, 4.3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj5.rotation, 4.3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj5.scale, 4.7, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj5.rotation, 4.7, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj6.scale, 4.6, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj6.rotation, 4.6, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj6.scale, 5, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj6.rotation, 5, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj7.scale, 5, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj7.rotation, 5, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj7.scale, 5.3, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj7.rotation, 5.3, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj8.scale, 5.3, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj8.rotation, 5.3, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj8.scale, 5.7, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj8.rotation, 5.7, { y: 2, ease: Expo.easeOut });
 
-                gsap.from(Obj9.scale, 5.6, { y: 9, ease: Expo.easeOut });
-                gsap.from(Obj9.rotation, 5.6, { y: 2, ease: Expo.easeOut });
+                gsap.from(Obj9.scale, 6, { y: 9, ease: Expo.easeOut });
+                gsap.from(Obj9.rotation, 6, { y: 2, ease: Expo.easeOut });
 
                 setTimeout(() => {
                     document.addEventListener('mousemove', function (e) {
@@ -519,7 +507,7 @@
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
             // Make the sphere follow the mouse
-            var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+            var vector = new THREE.Vector3(mouse.x, mouse.y*8, 0.5);
             vector.unproject(camera);
             var dir = vector.sub(camera.position).normalize();
             var distance = -camera.position.z / dir.z;
@@ -527,28 +515,8 @@
             //mouseMesh.position.copy(pos);
 
             // mouseLight.position.copy(new THREE.Vector3(pos.x, pos.y, pos.z + 2));
-            // gsap.to(mouseLight.position, 3, { y: pos.y, x: pos.x, z: pos.z, ease: Expo.easeOut })
+            gsap.to(mouseLight.position, 3, { y: pos.y, x: pos.x, z: pos.z, ease: Expo.easeOut })
         };
-
-
-        // const composer = new EffectComposer(renderer);
-        // composer.addPass(new RenderPass(scene, camera));
-        // const bloomPass = new BloomPass(
-        //     1,    // strength
-        //     25,   // kernel size
-        //     4,    // sigma ?
-        //     256,  // blur render target resolution
-        // );
-        // composer.addPass(bloomPass);
-        // const filmPass = new FilmPass(
-        //     0.35,   // noise intensity
-        //     0.025,  // scanline intensity
-        //     648,    // scanline count
-        //     false,  // grayscale
-        // );
-        // filmPass.renderToScreen = true;
-        // composer.addPass(filmPass);
-
 
         //COMPOSER
 
